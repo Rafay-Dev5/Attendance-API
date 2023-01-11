@@ -1,0 +1,51 @@
+﻿@model Project1.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Std_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Std_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Std_year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Std_year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Dep_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Dep_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section.Section_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.Section_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Std_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

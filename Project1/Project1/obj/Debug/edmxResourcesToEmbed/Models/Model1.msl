@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IPT_ProjModelStoreContainer" CdmEntityContainer="IPT_ProjEntities">
+    <EntitySetMapping Name="std_attendance">
+      <EntityTypeMapping TypeName="IPT_ProjModel.std_attendance">
+        <MappingFragment StoreEntitySet="std_attendance">
+          <ScalarProperty Name="std_id" ColumnName="std_id" />
+          <ScalarProperty Name="std_name" ColumnName="std_name" />
+          <ScalarProperty Name="present" ColumnName="present" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

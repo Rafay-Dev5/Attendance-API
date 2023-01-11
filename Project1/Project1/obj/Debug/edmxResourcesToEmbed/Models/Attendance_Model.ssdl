@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IPT_ProjModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="Std_ID" />
+      <PropertyRef Name="Teach_ID" />
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Std_ID" Type="int" Nullable="false" />
+    <Property Name="Teach_ID" Type="int" Nullable="false" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="Attendance" Type="varchar" MaxLength="1" />
+    <Property Name="Date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Dep_ID" />
+    </Key>
+    <Property Name="Dep_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Dep_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="Section_ID" />
+    </Key>
+    <Property Name="Section_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Section_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Std_ID" />
+    </Key>
+    <Property Name="Std_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Std_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Std_sectionID" Type="int" />
+    <Property Name="Std_year" Type="int" Nullable="false" />
+    <Property Name="Std_departmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Teach_ID" />
+    </Key>
+    <Property Name="Teach_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Teach_name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Attendanc__Cours__68487DD7">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Attendanc__Std_I__66603565">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="Std_ID" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Std_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Attendanc__Teach__6754599E">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="Attendance" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Teach_ID" />
+      </Principal>
+      <Dependent Role="Attendance">
+        <PropertyRef Name="Teach_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Students__Std_de__6383C8BA">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Dep_ID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="Std_departmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Students__Std_se__628FA481">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Students" Type="Self.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="Section_ID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="Std_sectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IPT_ProjModelStoreContainer">
+    <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Attendanc__Cours__68487DD7" Association="Self.FK__Attendanc__Cours__68487DD7">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Attendanc__Std_I__66603565" Association="Self.FK__Attendanc__Std_I__66603565">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Attendanc__Teach__6754599E" Association="Self.FK__Attendanc__Teach__6754599E">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Attendance" EntitySet="Attendance" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Students__Std_de__6383C8BA" Association="Self.FK__Students__Std_de__6383C8BA">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Students__Std_se__628FA481" Association="Self.FK__Students__Std_se__628FA481">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

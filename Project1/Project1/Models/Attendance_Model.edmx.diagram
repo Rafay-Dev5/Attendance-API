@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f69a35ea1e29449caf2701ca87984b1b" Name="Diagram1">
+        <EntityTypeShape EntityType="IPT_ProjModel.Attendance" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPT_ProjModel.Cours" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPT_ProjModel.Department" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPT_ProjModel.Section" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPT_ProjModel.Student" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="IPT_ProjModel.Teacher" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="IPT_ProjModel.FK__Attendanc__Cours__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="IPT_ProjModel.FK__Attendanc__Std_I__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="IPT_ProjModel.FK__Attendanc__Teach__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="IPT_ProjModel.FK__Students__Std_de__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="IPT_ProjModel.FK__Students__Std_se__628FA481" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
